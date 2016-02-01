@@ -11,6 +11,20 @@ body {
   padding: 20px;
 }
 
+.blue_game_piece {
+  width: 50px;
+  position: absolute;
+  left: 5px;
+  top: -10px;
+}
+
+.red_game_piece {
+  width: 48px;
+  position: absolute;
+  left: 6px;
+  top: -9px;
+}
+
 .hex-container {
   display: inline-block
 }
@@ -26,6 +40,7 @@ border-bottom: 20px solid orange;
   width: 60px;
   height: 30px;
   background-color: orange;
+  position: relative;
 }
 
 .hex-bottom {
