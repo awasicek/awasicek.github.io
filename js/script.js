@@ -5,7 +5,7 @@ var hexagons = $('.hex-container')
 
 hexagons.click(function(){
   var i = hexagons.index($(this))
-  console.log('clicked on game hex ' + (i+1))
+  console.log('This is game hex ' + (i+1) + '.')
 })
 
 var turn = 0
@@ -16,6 +16,8 @@ hexagons.click(function(){
     $(this).children('.hex-center').append('<img class="blue_game_piece" src="art/blue_sphere_piece.jpg" alt="blue game piece" />');
     turn += 1;
     $(this).addClass('blue-marker')
+    console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
+    // scoringLogicBlue(getXCoord(this), getYCoord(this))
     // getScoreBlue()
     // updateScoreBlue()
     $(this).toggleClass('played')
@@ -24,6 +26,7 @@ hexagons.click(function(){
     $(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')
     turn += 1;
     $(this).addClass('red-marker')
+    console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
     // getScoreRed()
     // updateScoreRed()
     $(this).toggleClass('played')
@@ -46,35 +49,7 @@ hexagons.click(function(){
 var blueScore = 0
 var redScore = 0
 
-//GAME LOGIC FOR SCORING -- SIMPLIFY THIS TO AN ALGORIHTIM AFTER ALPHA FINISHED
-
-
-// function checkHex2Blue() {
-//   $('#game-hex-2').hasClass('blue-marker')
-// }
-//
-// var checkHex3Blue = $('#game-hex-3').hasClass('blue-marker')
-// var checkHex4Blue = $('#game-hex-4').hasClass('blue-marker')
-// var checkHex5Blue = $('#game-hex-5').hasClass('blue-marker')
-// var checkHex6Blue = $('#game-hex-6').hasClass('blue-marker')
-// var checkHex7Blue = $('#game-hex-7').hasClass('blue-marker')
-// var checkHex8Blue = $('#game-hex-8').hasClass('blue-marker')
-// var checkHex9Blue = $('#game-hex-9').hasClass('blue-marker')
-// var checkHex10Blue = $('#game-hex-10').hasClass('blue-marker')
-// var checkHex11Blue = $('#game-hex-11').hasClass('blue-marker')
-//
-// var checkHex2Red = $('#game-hex-2').hasClass('red-marker')
-// var checkHex3Red = $('#game-hex-3').hasClass('red-marker')
-// var checkHex4Red = $('#game-hex-4').hasClass('red-marker')
-// var checkHex5Red = $('#game-hex-5').hasClass('red-marker')
-// var checkHex6Red = $('#game-hex-6').hasClass('red-marker')
-// var checkHex7Red = $('#game-hex-7').hasClass('red-marker')
-// var checkHex8Red = $('#game-hex-8').hasClass('red-marker')
-// var checkHex9Red = $('#game-hex-9').hasClass('red-marker')
-// var checkHex10Red = $('#game-hex-10').hasClass('red-marker')
-// var checkHex11Red = $('#game-hex-11').hasClass('red-marker')
-
-// $('game-hex-2').hasClass('blue-marker') || $('game-hex-6').hasClass('blue-marker') || $('game-hex-7').hasClass('blue-marker')
+//GAME LOGIC FOR SCORING
 
 // function floodFill(x, y){
 // 	if(alreadyFilled(x, y)) return;
@@ -86,54 +61,185 @@ var redScore = 0
 // 	floodFill(x-1, y  );
 // }
 //
+
 //Where x and y are the coordinates of the hex
+
+
+function getXCoord(el) {
+  if ($(el).hasClass('x1')) {
+    // console.log("x coord is 1")
+    return 1
+  }
+  if ($(el).hasClass('x2')) {
+    // console.log("x coord is 2")
+    return 2
+  }
+  if ($(el).hasClass('x3')) {
+    // console.log("x coord is 3")
+    return 3
+  }
+  if ($(el).hasClass('x4')) {
+    // console.log("x coord is 4")
+    return 4
+  }
+  if ($(el).hasClass('x5')) {
+    // console.log("x coord is 5")
+    return 5
+  }
+  if ($(el).hasClass('x6')) {
+    // console.log("x coord is 6")
+    return 6
+  }
+  if ($(el).hasClass('x7')) {
+    // console.log("x coord is 7")
+    return 7
+  }
+  if ($(el).hasClass('x8')) {
+    // console.log("x coord is 8")
+    return 8
+  }
+  if ($(el).hasClass('x9')) {
+    // console.log("x coord is 9")
+    return 9
+  }
+  if ($(el).hasClass('x10')) {
+    // console.log("x coord is 10")
+    return 10
+  }
+  if ($(el).hasClass('x11')) {
+    // console.log("x coord is 11")
+    return 11
+  }
+  if ($(el).hasClass('x12')) {
+    // console.log("x coord is 12")
+    return 12
+  }
+  if ($(el).hasClass('x13')) {
+    // console.log("x coord is 13")
+    return 13
+  }
+  if ($(el).hasClass('x14')) {
+    // console.log("x coord is 14")
+    return 14
+  }
+  if ($(el).hasClass('x15')) {
+    // console.log("x coord is 15")
+    return 15
+  }
+}
+//This will output the x coordinate
+
+function getYCoord(el) {
+  if ($(el).hasClass('y1')) {
+    // console.log("y coord is 1")
+    return 1
+  }
+  if ($(el).hasClass('y2')) {
+    // console.log("y coord is 2")
+    return 2
+  }
+  if ($(el).hasClass('y3')) {
+    // console.log("y coord is 3")
+    return 3
+  }
+  if ($(el).hasClass('y4')) {
+    // console.log("y coord is 4")
+    return 4
+  }
+  if ($(el).hasClass('y5')) {
+    // console.log("y coord is 5")
+    return 5
+  }
+  if ($(el).hasClass('y6')) {
+    // console.log("y coord is 6")
+    return 6
+  }
+  if ($(el).hasClass('y7')) {
+    // console.log("y coord is 7")
+    return 7
+  }
+  if ($(el).hasClass('y8')) {
+    // console.log("y coord is 8")
+    return 8
+  }
+  if ($(el).hasClass('y9')) {
+    // console.log("y coord is 9")
+    return 9
+  }
+  if ($(el).hasClass('y10')) {
+    // console.log("y coord is 10")
+    return 10
+  }
+  if ($(el).hasClass('y11')) {
+    // console.log("y coord is 11")
+    return 11
+  }
+  if ($(el).hasClass('y12')) {
+    // console.log("y coord is 12")
+    return 12
+  }
+  if ($(el).hasClass('y13')) {
+    // console.log("y coord is 13")
+    return 13
+  }
+  if ($(el).hasClass('y14')) {
+    // console.log("y coord is 14")
+    return 14
+  }
+  if ($(el).hasClass('y15')) {
+    // console.log("y coord is 15")
+    return 15
+  }
+}
+//This will output the y coordinate
+
 function alreadyScored(x, y) {
-  return $(x, y).hasClass('scored')
-  // returns true if that hex has already been scored and false if it hasn't been scored
+  return $('.x'+x+'.y'+y).hasClass('scored')
+//Returns true if the hex at position (x, y) has already been scored and false if it hasn't been scored
 }
 
 function markScoredBlue(x, y) {
-  $(x, y).addClass('scored')
-//This will mark a hex as already scored
+  $('.x'+x+'.y'+y).addClass('scored')
+//This will mark the hex at position (x, y) as scored
 }
 
 function checkForBlue(x, y) {
+  return $('.x'+x+'.y'+y).hasClass('blue-marker')
+//This will check the hex at position (x, y) to see if there is a blue piece on it
+//and it will return true if there is a blue piece there and false if there is no blue piece there
+}
+
+function scoringLogicBlue(x, y) {
   if (alreadyScored(x, y)) {
     return;
   }
   if (checkForBlue(x-1, y-1)) {
-//Hex one row up and to the left
-    scoreBlue(x, y);
+    blueScore += 1;
     markScoredBlue(x, y);
     return;
   }
   if (checkForBlue(x+1, y-1)) {
-//Hex one row up and to the right
-    scoreBlue(x, y);
+    blueScore += 1;
     markScoredBlue(x, y);
     return;
   }
   if (checkForBlue(x-2, y)) {
-//Hex on same row and to the left
-    scoreBlue(x, y);
+    blueScore += 1;
     markScoredBlue(x, y);
     return;
   }
   if (checkForBlue(x+2, y)) {
-//Hex on same row and to the right
-    scoreBlue(x, y);
+    blueScore += 1;
     markScoredBlue(x, y);
     return;
   }
   if (checkForBlue(x-1, y+1)) {
-//Hex one row down and to the left
-    scoreBlue(x, y);
+    blueScore += 1;
     markScoredBlue(x, y);
     return;
   }
   if (checkForBlue(x+1, y+1)) {
-//Hex one row down and to the right
-    scoreBlue(x, y);
+    blueScore += 1;
     markScoredBlue(x, y);
     return;
   }
@@ -237,7 +343,7 @@ function checkForBlue(x, y) {
 // function updateScoreBlue() {
 //   $('#blue-score').text('Blue Score: ' + blueScore)
 // }
-//
+
 // function updateScoreRed() {
 //   $('#red-score').text('Red Score: ' + redScore)
 // }
