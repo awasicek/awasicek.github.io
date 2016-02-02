@@ -18,8 +18,8 @@ hexagons.click(function(){
     $(this).addClass('blue-marker')
     console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
     // scoringLogicBlue(getXCoord(this), getYCoord(this))
-    // getScoreBlue()
-    // updateScoreBlue()
+    scanAll()
+    updateScoreBlue()
     $(this).toggleClass('played')
   }
   else if ((turn % 2 === 1) && !($(this).hasClass('played'))) {
@@ -27,8 +27,9 @@ hexagons.click(function(){
     turn += 1;
     $(this).addClass('red-marker')
     console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
-    // getScoreRed()
-    // updateScoreRed()
+    // scoringLogicRed(getXCoord(this), getYCoord(this))
+    scanAll()
+    updateScoreRed()
     $(this).toggleClass('played')
   }
 })
@@ -209,6 +210,130 @@ function checkForBlue(x, y) {
 //and it will return true if there is a blue piece there and false if there is no blue piece there
 }
 
+//Scan all hexes for unscored blue pieces
+function scanAll() {
+  scanLogic(1, 1)
+  scanLogic(1, 2)
+  scanLogic(1, 3)
+  scanLogic(1, 4)
+  scanLogic(1, 5)
+  scanLogic(1, 6)
+  scanLogic(1, 7)
+  scanLogic(2, 1)
+  scanLogic(2, 2)
+  scanLogic(2, 3)
+  scanLogic(2, 4)
+  scanLogic(2, 5)
+  scanLogic(2, 6)
+  scanLogic(2, 7)
+  scanLogic(3, 1)
+  scanLogic(3, 2)
+  scanLogic(3, 3)
+  scanLogic(3, 4)
+  scanLogic(3, 5)
+  scanLogic(3, 6)
+  scanLogic(3, 7)
+  scanLogic(4, 1)
+  scanLogic(4, 2)
+  scanLogic(4, 3)
+  scanLogic(4, 4)
+  scanLogic(4, 5)
+  scanLogic(4, 6)
+  scanLogic(4, 7)
+  scanLogic(5, 1)
+  scanLogic(5, 2)
+  scanLogic(5, 3)
+  scanLogic(5, 4)
+  scanLogic(5, 5)
+  scanLogic(5, 6)
+  scanLogic(5, 7)
+  scanLogic(6, 1)
+  scanLogic(6, 2)
+  scanLogic(6, 3)
+  scanLogic(6, 4)
+  scanLogic(6, 5)
+  scanLogic(6, 6)
+  scanLogic(6, 7)
+  scanLogic(7, 1)
+  scanLogic(7, 2)
+  scanLogic(7, 3)
+  scanLogic(7, 4)
+  scanLogic(7, 5)
+  scanLogic(7, 6)
+  scanLogic(7, 7)
+  scanLogic(8, 1)
+  scanLogic(8, 2)
+  scanLogic(8, 3)
+  scanLogic(8, 4)
+  scanLogic(8, 5)
+  scanLogic(8, 6)
+  scanLogic(8, 7)
+  scanLogic(9, 1)
+  scanLogic(9, 2)
+  scanLogic(9, 3)
+  scanLogic(9, 4)
+  scanLogic(9, 5)
+  scanLogic(9, 6)
+  scanLogic(9, 7)
+  scanLogic(10, 1)
+  scanLogic(10, 2)
+  scanLogic(10, 3)
+  scanLogic(10, 4)
+  scanLogic(10, 5)
+  scanLogic(10, 6)
+  scanLogic(10, 7)
+  scanLogic(11, 1)
+  scanLogic(11, 2)
+  scanLogic(11, 3)
+  scanLogic(11, 4)
+  scanLogic(11, 5)
+  scanLogic(11, 6)
+  scanLogic(11, 7)
+  scanLogic(12, 1)
+  scanLogic(12, 2)
+  scanLogic(12, 3)
+  scanLogic(12, 4)
+  scanLogic(12, 5)
+  scanLogic(12, 6)
+  scanLogic(12, 7)
+  scanLogic(13, 1)
+  scanLogic(13, 2)
+  scanLogic(13, 3)
+  scanLogic(13, 4)
+  scanLogic(13, 5)
+  scanLogic(13, 6)
+  scanLogic(13, 7)
+  scanLogic(14, 1)
+  scanLogic(14, 2)
+  scanLogic(14, 3)
+  scanLogic(14, 4)
+  scanLogic(14, 5)
+  scanLogic(14, 6)
+  scanLogic(14, 7)
+  scanLogic(15, 1)
+  scanLogic(15, 2)
+  scanLogic(15, 3)
+  scanLogic(15, 4)
+  scanLogic(15, 5)
+  scanLogic(15, 6)
+  scanLogic(15, 7)
+}
+
+function scanLogic(x, y) {
+  if (checkForBlue(x, y) && !alreadyScored(x,y)) {
+    if (checkForBlue(x-1, y-1) || checkForBlue(x+1, y-1) || checkForBlue(x-2, y) || checkForBlue(x+2, y) || checkForBlue(x-1, y+1) || checkForBlue(x+1, y+1)) {
+      blueScore +=1;
+      markScoredBlue(x, y);
+    }
+  }
+  if (checkForRed(x, y) && !alreadyScored(x,y)) {
+    if (checkForRed(x-1, y-1) || checkForRed(x+1, y-1) || checkForRed(x-2, y) || checkForRed(x+2, y) || checkForRed(x-1, y+1) || checkForRed(x+1, y+1)) {
+      redScore +=1;
+      markScoredRed(x, y);
+    }
+  }
+}
+
 function scoringLogicBlue(x, y) {
   if (alreadyScored(x, y)) {
     return;
@@ -243,107 +368,60 @@ function scoringLogicBlue(x, y) {
     markScoredBlue(x, y);
     return;
   }
+}
+
+function markScoredRed(x, y) {
+  $('.x'+x+'.y'+y).addClass('scored')
+//This will mark the hex at position (x, y) as scored
+}
+
+function checkForRed(x, y) {
+  return $('.x'+x+'.y'+y).hasClass('red-marker')
+//This will check the hex at position (x, y) to see if there is a red piece on it
+//and it will return true if there is a red piece there and false if there is no red piece there
+}
+
+function scoringLogicRed(x, y) {
+  if (alreadyScored(x, y)) {
+    return;
+  }
+  if (checkForRed(x-1, y-1)) {
+    redScore += 1;
+    markScoredRed(x, y);
+    return;
+  }
+  if (checkForRed(x+1, y-1)) {
+    redScore += 1;
+    markScoredRed(x, y);
+    return;
+  }
+  if (checkForRed(x-2, y)) {
+    redScore += 1;
+    markScoredRed(x, y);
+    return;
+  }
+  if (checkForRed(x+2, y)) {
+    redScore += 1;
+    markScoredRed(x, y);
+    return;
+  }
+  if (checkForRed(x-1, y+1)) {
+    redScore += 1;
+    markScoredRed(x, y);
+    return;
+  }
+  if (checkForRed(x+1, y+1)) {
+    redScore += 1;
+    markScoredRed(x, y);
+    return;
+  }
+}
 
 
+function updateScoreBlue() {
+  $('#blue-score').text('Blue Score: ' + blueScore)
+}
 
-// function getScoreBlue() {
-//   if (($('#game-hex-1').hasClass('blue-marker')) && !($('#game-hex-1').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-1').addClass('scored')
-//   }
-//   if (($('#game-hex-2').hasClass('blue-marker')) && !($('#game-hex-2').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-2').addClass('scored')
-//   }
-//   if (($('#game-hex-3').hasClass('blue-marker')) && !($('#game-hex-3').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-3').addClass('scored')
-//   }
-//   if (($('#game-hex-4').hasClass('blue-marker')) && !($('#game-hex-4').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-4').addClass('scored')
-//   }
-//   if (($('#game-hex-5').hasClass('blue-marker')) && !($('#game-hex-5').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-5').addClass('scored')
-//   }
-//   if (($('#game-hex-6').hasClass('blue-marker')) && !($('#game-hex-6').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-6').addClass('scored')
-//   }
-//   if (($('#game-hex-7').hasClass('blue-marker')) && !($('#game-hex-7').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-7').addClass('scored')
-//   }
-//   if (($('#game-hex-8').hasClass('blue-marker')) && !($('#game-hex-8').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-8').addClass('scored')
-//   }
-//   if (($('#game-hex-9').hasClass('blue-marker')) && !($('#game-hex-9').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-9').addClass('scored')
-//   }
-//   if (($('#game-hex-10').hasClass('blue-marker')) && !($('#game-hex-10').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-10').addClass('scored')
-//   }
-//   if (($('#game-hex-11').hasClass('blue-marker')) && !($('#game-hex-11').hasClass('scored'))) {
-//     blueScore += 1
-//     $('#game-hex-11').addClass('scored')
-//   }
-// }
-//
-// function getScoreRed() {
-//   if (($('#game-hex-1').hasClass('red-marker')) && !($('#game-hex-1').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-1').addClass('scored')
-//   }
-//   if (($('#game-hex-2').hasClass('red-marker')) && !($('#game-hex-2').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-2').addClass('scored')
-//   }
-//   if (($('#game-hex-3').hasClass('red-marker')) && !($('#game-hex-3').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-3').addClass('scored')
-//   }
-//   if (($('#game-hex-4').hasClass('red-marker')) && !($('#game-hex-4').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-4').addClass('scored')
-//   }
-//   if (($('#game-hex-5').hasClass('red-marker')) && !($('#game-hex-5').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-5').addClass('scored')
-//   }
-//   if (($('#game-hex-6').hasClass('red-marker')) && !($('#game-hex-6').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-6').addClass('scored')
-//   }
-//   if (($('#game-hex-7').hasClass('red-marker')) && !($('#game-hex-7').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-7').addClass('scored')
-//   }
-//   if (($('#game-hex-8').hasClass('red-marker')) && !($('#game-hex-8').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-8').addClass('scored')
-//   }
-//   if (($('#game-hex-9').hasClass('red-marker')) && !($('#game-hex-9').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-9').addClass('scored')
-//   }
-//   if (($('#game-hex-10').hasClass('red-marker')) && !($('#game-hex-10').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-10').addClass('scored')
-//   }
-//   if (($('#game-hex-11').hasClass('red-marker')) && !($('#game-hex-11').hasClass('scored'))) {
-//     redScore += 1
-//     $('#game-hex-11').addClass('scored')
-//   }
-// }
-
-// function updateScoreBlue() {
-//   $('#blue-score').text('Blue Score: ' + blueScore)
-// }
-
-// function updateScoreRed() {
-//   $('#red-score').text('Red Score: ' + redScore)
-// }
+function updateScoreRed() {
+  $('#red-score').text('Red Score: ' + redScore)
+}
