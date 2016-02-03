@@ -6,6 +6,7 @@ var hexagons = $('.hex-container')
 hexagons.click(function(){
   var i = hexagons.index($(this))
   console.log('This is game hex ' + (i+1) + '.')
+  console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
 })
 
 var turn = 0
@@ -13,38 +14,45 @@ var turn = 0
 // This function puts a player piece in a given hex as long as that hex has not already been used and marks that hex with the given color for the game logic's scoring
 hexagons.click(function(){
   if ((turn % 2 === 0) && !($(this).hasClass('played'))) {
-    $(this).children('.hex-center').append('<img class="blue_game_piece" src="art/blue_sphere_piece.jpg" alt="blue game piece" />');
+    if (turn > 0) {
+    $(this).children('.hex-center').append('<img class="blue_game_piece" src="art/blue_sphere_piece.jpg" alt="blue game piece" />');}
+    if (turn === 0) {
+      $(this).addClass('homeMarkerBlue')
+      $(this).children('.hex-center').append('<img class="blue_small_house" src="art/blue-small-house.png" alt="blue house piece" />')
+    }
     turn += 1;
     $(this).addClass('blue-marker')
-    console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
     // scoringLogicBlue(getXCoord(this), getYCoord(this))
-    scanAll()
-    updateScoreBlue()
+    // scanAll()
+    // updateScoreBlue()
     $(this).toggleClass('played')
   }
   else if ((turn % 2 === 1) && !($(this).hasClass('played'))) {
-    $(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')
+    if (turn > 1) {$(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')}
+    if (turn === 1) {
+      $(this).addClass('homeMarkerRed')
+      $(this).children('.hex-center').append('<img class="red_small_house" src="art/red-small-house.png" alt="red house piece" />')
+    }
     turn += 1;
     $(this).addClass('red-marker')
-    console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
     // scoringLogicRed(getXCoord(this), getYCoord(this))
-    scanAll()
-    updateScoreRed()
+    // scanAll()
+    // updateScoreRed()
     $(this).toggleClass('played')
   }
 })
-
+  
 // This function uses animation to change the color of the hexes as they are used
 hexagons.click(function(){
-  $(this).children('.hex-top').animate({
-    'borderBottomColor': 'black'
-  })
-  $(this).children('.hex-center').animate({
-    'background-color': 'black'
-  })
-  $(this).children('.hex-bottom').animate({
-    'borderTopColor': 'black'
-  })
+    $(this).children('.hex-top').animate({
+      'borderBottomColor': 'black'
+    })
+    $(this).children('.hex-center').animate({
+      'background-color': 'black'
+    })
+    $(this).children('.hex-bottom').animate({
+      'borderTopColor': 'black'
+    })
 })
 
 var blueScore = 0
@@ -64,7 +72,6 @@ var redScore = 0
 //
 
 //Where x and y are the coordinates of the hex
-
 
 function getXCoord(el) {
   if ($(el).hasClass('x1')) {
@@ -334,41 +341,77 @@ function scanLogic(x, y) {
   }
 }
 
-function scoringLogicBlue(x, y) {
-  if (alreadyScored(x, y)) {
-    return;
+blueTileAreaLengths = []
+
+//This is a recursive algorithm for finding the size/length given a starting hex
+var blueLength = 0
+
+
+
+function checkHex(x, y) {
+  if (checkForBlue(x, y) && !alreadyScored(x, y)) {
+    console.log("looking at surrounding hexes")
+    if (checkForBlue(x-1, y-1) || checkForBlue(x+1, y-1) || checkForBlue(x-2, y) || checkForBlue(x+2, y) || checkForBlue(x-1, y+1) || checkForBlue(x+1, y+1))  {
+      markScoredBlue(x, y)
+      blueLength += 1
+      console.log('blueLength incremented because of ' + '(' + x + ',' + y +')')
+      checkHex(x-1, y-1)
+      checkHex(x+1, y-1)
+      checkHex(x-2, y)
+      checkHex(x+2, y)
+      checkHex(x-1, y+1)
+      checkHex(x+1, y+1)
+    }
   }
-  if (checkForBlue(x-1, y-1)) {
-    blueScore += 1;
-    markScoredBlue(x, y);
-    return;
-  }
-  if (checkForBlue(x+1, y-1)) {
-    blueScore += 1;
-    markScoredBlue(x, y);
-    return;
-  }
-  if (checkForBlue(x-2, y)) {
-    blueScore += 1;
-    markScoredBlue(x, y);
-    return;
-  }
-  if (checkForBlue(x+2, y)) {
-    blueScore += 1;
-    markScoredBlue(x, y);
-    return;
-  }
-  if (checkForBlue(x-1, y+1)) {
-    blueScore += 1;
-    markScoredBlue(x, y);
-    return;
-  }
-  if (checkForBlue(x+1, y+1)) {
-    blueScore += 1;
-    markScoredBlue(x, y);
-    return;
+  else {return}
+}
+
+function catalogLengthsBlue() {
+  function clearScoredTags() {
+
   }
 }
+
+
+
+
+
+
+// function scoringLogicBlue(x, y) {
+//   if (alreadyScored(x, y)) {
+//     return;
+//   }
+//   if (checkForBlue(x-1, y-1)) {
+//     blueScore += 1;
+//     markScoredBlue(x, y);
+//     return;
+//   }
+//   if (checkForBlue(x+1, y-1)) {
+//     blueScore += 1;
+//     markScoredBlue(x, y);
+//     return;
+//   }
+//   if (checkForBlue(x-2, y)) {
+//     blueScore += 1;
+//     markScoredBlue(x, y);
+//     return;
+//   }
+//   if (checkForBlue(x+2, y)) {
+//     blueScore += 1;
+//     markScoredBlue(x, y);
+//     return;
+//   }
+//   if (checkForBlue(x-1, y+1)) {
+//     blueScore += 1;
+//     markScoredBlue(x, y);
+//     return;
+//   }
+//   if (checkForBlue(x+1, y+1)) {
+//     blueScore += 1;
+//     markScoredBlue(x, y);
+//     return;
+//   }
+// }
 
 function markScoredRed(x, y) {
   $('.x'+x+'.y'+y).addClass('scored')
@@ -381,41 +424,41 @@ function checkForRed(x, y) {
 //and it will return true if there is a red piece there and false if there is no red piece there
 }
 
-function scoringLogicRed(x, y) {
-  if (alreadyScored(x, y)) {
-    return;
-  }
-  if (checkForRed(x-1, y-1)) {
-    redScore += 1;
-    markScoredRed(x, y);
-    return;
-  }
-  if (checkForRed(x+1, y-1)) {
-    redScore += 1;
-    markScoredRed(x, y);
-    return;
-  }
-  if (checkForRed(x-2, y)) {
-    redScore += 1;
-    markScoredRed(x, y);
-    return;
-  }
-  if (checkForRed(x+2, y)) {
-    redScore += 1;
-    markScoredRed(x, y);
-    return;
-  }
-  if (checkForRed(x-1, y+1)) {
-    redScore += 1;
-    markScoredRed(x, y);
-    return;
-  }
-  if (checkForRed(x+1, y+1)) {
-    redScore += 1;
-    markScoredRed(x, y);
-    return;
-  }
-}
+// function scoringLogicRed(x, y) {
+//   if (alreadyScored(x, y)) {
+//     return;
+//   }
+//   if (checkForRed(x-1, y-1)) {
+//     redScore += 1;
+//     markScoredRed(x, y);
+//     return;
+//   }
+//   if (checkForRed(x+1, y-1)) {
+//     redScore += 1;
+//     markScoredRed(x, y);
+//     return;
+//   }
+//   if (checkForRed(x-2, y)) {
+//     redScore += 1;
+//     markScoredRed(x, y);
+//     return;
+//   }
+//   if (checkForRed(x+2, y)) {
+//     redScore += 1;
+//     markScoredRed(x, y);
+//     return;
+//   }
+//   if (checkForRed(x-1, y+1)) {
+//     redScore += 1;
+//     markScoredRed(x, y);
+//     return;
+//   }
+//   if (checkForRed(x+1, y+1)) {
+//     redScore += 1;
+//     markScoredRed(x, y);
+//     return;
+//   }
+// }
 
 
 function updateScoreBlue() {
