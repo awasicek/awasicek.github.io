@@ -1,11 +1,27 @@
 body {
   background-color: #DEFFFF;
+  background-image: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/rain-background.jpg');
+  background-size: 1200px;
+}
+
+/*This CSS makes it so no text or images are highlightable on the page*/
+* {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@font-face {
+    font-family: 'CabinSketch';
+    src: url('file:/Users/awasicek/wdi/workspace/project-01-game/fonts/CabinSketch-Regular.otf');
 }
 
 #game-area {
   width: 508px;
   height: 395px;
-  background-color: cyan;
+  background-color: rgba(103, 103, 103, 0.5);
   margin: auto;
   border: 2px solid black;
   padding: 20px;
@@ -48,13 +64,13 @@ body {
 width: 0px;
 border-left: 30px solid transparent;
 border-right: 30px solid transparent;
-border-bottom: 20px solid orange;
+border-bottom: 20px solid #666564;
 }
 
 .hex-center {
   width: 60px;
   height: 30px;
-  background-color: orange;
+  background-color: #666564;
   position: relative;
 }
 
@@ -62,7 +78,7 @@ border-bottom: 20px solid orange;
 width: 0px;
 border-left: 30px solid transparent;
 border-right: 30px solid transparent;
-border-top: 20px solid orange;
+border-top: 20px solid #666564;
 }
 
 
@@ -101,13 +117,48 @@ border-top: 20px solid orange;
 }
 
 #blue-score {
-  background-color: blue;
-  color: white;
-  width: 125px;
+  font-family: 'CabinSketch';
+  font-size: 50px;
+  color: blue;
+  width: 150px;
 }
 
 #red-score {
-  background-color: red;
+  font-family: 'CabinSketch';
+  font-size: 50px;
+  color: red;
+  width: 150px;
+}
+
+#newGameButton {
+  background-color: black;
   color: white;
-  width: 125px;
+  font-size: 20px;
+  font-family: 'CabinSketch';
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/*This CSS disables Chrome's blue outline around the button when clicked*/
+#newGameButton:focus {
+  outline:0;}
+
+#newGameButton:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+.music:hover {
+  cursor: pointer;
+}
+
+.mute {
+  content: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/volume-mute-icon.png');
+  width: 50px;
+}
+
+.unmute {
+  content: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/volume-on-icon.png');
+  width: 50px;
 }

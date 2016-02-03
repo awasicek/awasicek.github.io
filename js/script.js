@@ -20,9 +20,9 @@ function newGame() {
     $('#game-hex-' + i).removeClass('red-marker')
     $('#game-hex-' + i).removeClass('played')
     $('#game-hex-' + i).children('.hex-center').empty()
-    $('#game-hex-' + i).children('.hex-top').css("border-bottom", "20px solid orange")
-    $('#game-hex-' + i).children('.hex-center').css("background-color", "orange")
-    $('#game-hex-' + i).children('.hex-bottom').css("border-top", "20px solid orange")
+    $('#game-hex-' + i).children('.hex-top').css("border-bottom", "20px solid #666564")
+    $('#game-hex-' + i).children('.hex-center').css("background-color", "#666564")
+    $('#game-hex-' + i).children('.hex-bottom').css("border-top", "20px solid #666564")
   }
   updateScoreBlue()
   updateScoreRed()
@@ -526,3 +526,19 @@ function updateScoreBlue() {
 function updateScoreRed() {
   $('#red-score').text('Red Score: ' + redLength)
 }
+
+//Audio
+$(".my_audio").trigger('load');
+var audio = document.getElementById('my_audio')
+audio.play();
+ $('.music').click(function(){
+   console.log('music click working')
+   $('.music').toggleClass('mute')
+   $('.music').toggleClass('unmute')
+   if ($('.music').hasClass('mute')) {
+     document.getElementById('my_audio').muted = true;
+   }
+   if ($('.music').hasClass('unmute')) {
+     document.getElementById('my_audio').muted = false;
+   }
+ })
