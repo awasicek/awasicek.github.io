@@ -1,6 +1,33 @@
 // $('#game-hex-1 *').click(function(){console.log('clicked game-hex-1')})
 // $('#game-hex-2 *').click(function(){console.log('clicked game-hex-2')})
 
+var newGameButton = $('#newGameButton')
+
+newGameButton.click(function(){
+  newGame()
+})
+
+function newGame() {
+  turn = 0
+  console.log('new game working')
+  clearScoredTags()
+  blueLength = 0
+  redLength = 0
+  for (i=1; i<45; i +=1) {
+    $('#game-hex-' + i).removeClass('homeMarkerBlue')
+    $('#game-hex-' + i).removeClass('homeMarkerRed')
+    $('#game-hex-' + i).removeClass('blue-marker')
+    $('#game-hex-' + i).removeClass('red-marker')
+    $('#game-hex-' + i).removeClass('played')
+    $('#game-hex-' + i).children('.hex-center').empty()
+    $('#game-hex-' + i).children('.hex-top').css("border-bottom", "20px solid orange")
+    $('#game-hex-' + i).children('.hex-center').css("background-color", "orange")
+    $('#game-hex-' + i).children('.hex-bottom').css("border-top", "20px solid orange")
+  }
+  updateScoreBlue()
+  updateScoreRed()
+}
+
 var hexagons = $('.hex-container')
 
 hexagons.click(function(){
@@ -24,8 +51,11 @@ hexagons.click(function(){
     $(this).addClass('blue-marker')
     // scoringLogicBlue(getXCoord(this), getYCoord(this))
     // scanAll()
-    // updateScoreBlue()
+    checkHexBlue(xCoordBlueHome(), yCoordBlueHome())
+    updateScoreBlue()
+    clearScoredTags()
     $(this).toggleClass('played')
+    blueLength = 0
   }
   else if ((turn % 2 === 1) && !($(this).hasClass('played'))) {
     if (turn > 1) {$(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')}
@@ -37,8 +67,11 @@ hexagons.click(function(){
     $(this).addClass('red-marker')
     // scoringLogicRed(getXCoord(this), getYCoord(this))
     // scanAll()
-    // updateScoreRed()
+    checkHexRed(xCoordRedHome(), yCoordRedHome())
+    updateScoreRed()
+    clearScoredTags()
     $(this).toggleClass('played')
+    redLength = 0
   }
 })
   
@@ -341,41 +374,67 @@ function scanLogic(x, y) {
   }
 }
 
-blueTileAreaLengths = []
+function xCoordBlueHome() {
+  return getXCoord('.homeMarkerBlue')
+}
+
+function yCoordBlueHome() {
+  return getYCoord('.homeMarkerBlue')
+}
+
+function xCoordRedHome() {
+  return getXCoord('.homeMarkerRed')
+}
+
+function yCoordRedHome() {
+  return getYCoord('.homeMarkerRed')
+}
 
 //This is a recursive algorithm for finding the size/length given a starting hex
 var blueLength = 0
+var redLength = 0
 
-
-
-function checkHex(x, y) {
+function checkHexBlue(x, y) {
   if (checkForBlue(x, y) && !alreadyScored(x, y)) {
     console.log("looking at surrounding hexes")
     if (checkForBlue(x-1, y-1) || checkForBlue(x+1, y-1) || checkForBlue(x-2, y) || checkForBlue(x+2, y) || checkForBlue(x-1, y+1) || checkForBlue(x+1, y+1))  {
       markScoredBlue(x, y)
       blueLength += 1
       console.log('blueLength incremented because of ' + '(' + x + ',' + y +')')
-      checkHex(x-1, y-1)
-      checkHex(x+1, y-1)
-      checkHex(x-2, y)
-      checkHex(x+2, y)
-      checkHex(x-1, y+1)
-      checkHex(x+1, y+1)
+      checkHexBlue(x-1, y-1)
+      checkHexBlue(x+1, y-1)
+      checkHexBlue(x-2, y)
+      checkHexBlue(x+2, y)
+      checkHexBlue(x-1, y+1)
+      checkHexBlue(x+1, y+1)
     }
   }
   else {return}
 }
 
-function catalogLengthsBlue() {
-  function clearScoredTags() {
-
+function checkHexRed(x, y) {
+  if (checkForRed(x, y) && !alreadyScored(x, y)) {
+    console.log("looking at surrounding hexes")
+    if (checkForRed(x-1, y-1) || checkForRed(x+1, y-1) || checkForRed(x-2, y) || checkForRed(x+2, y) || checkForRed(x-1, y+1) || checkForRed(x+1, y+1))  {
+      markScoredRed(x, y)
+      redLength += 1
+      console.log('redLength incremented because of ' + '(' + x + ',' + y +')')
+      checkHexRed(x-1, y-1)
+      checkHexRed(x+1, y-1)
+      checkHexRed(x-2, y)
+      checkHexRed(x+2, y)
+      checkHexRed(x-1, y+1)
+      checkHexRed(x+1, y+1)
+    }
   }
+  else {return}
 }
 
-
-
-
-
+function clearScoredTags() {
+  for (i=1; i<45; i +=1) {
+    $('#game-hex-' + i).removeClass('scored')
+  }
+}
 
 // function scoringLogicBlue(x, y) {
 //   if (alreadyScored(x, y)) {
@@ -460,11 +519,10 @@ function checkForRed(x, y) {
 //   }
 // }
 
-
 function updateScoreBlue() {
-  $('#blue-score').text('Blue Score: ' + blueScore)
+  $('#blue-score').text('Blue Score: ' + blueLength)
 }
 
 function updateScoreRed() {
-  $('#red-score').text('Red Score: ' + redScore)
+  $('#red-score').text('Red Score: ' + redLength)
 }
