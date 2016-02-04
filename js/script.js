@@ -1,6 +1,16 @@
 // $('#game-hex-1 *').click(function(){console.log('clicked game-hex-1')})
 // $('#game-hex-2 *').click(function(){console.log('clicked game-hex-2')})
 
+
+//Cancel button
+var cancelButton = $('#cancel-button')
+var cover = $('#cover')
+cancelButton.click(function(){
+    cover.css("display", "none")
+    cancelButton.css("display", "none")
+})
+
+//New game
 var newGameButton = $('#newGameButton')
 
 newGameButton.click(function(){
@@ -20,13 +30,19 @@ function newGame() {
     $('#game-hex-' + i).removeClass('red-marker')
     $('#game-hex-' + i).removeClass('played')
     $('#game-hex-' + i).children('.hex-center').empty()
-    $('#game-hex-' + i).children('.hex-top').css("border-bottom", "20px solid orange")
-    $('#game-hex-' + i).children('.hex-center').css("background-color", "orange")
-    $('#game-hex-' + i).children('.hex-bottom').css("border-top", "20px solid orange")
+    $('#game-hex-' + i).children('.hex-top').css("border-bottom", "20px solid #666564")
+    $('#game-hex-' + i).children('.hex-center').css("background-color", "#666564")
+    $('#game-hex-' + i).children('.hex-bottom').css("border-top", "20px solid #666564")
   }
   updateScoreBlue()
   updateScoreRed()
+  cover.children('p').html(cover.children('p').html().replace('Blue Wins!!!', ''))
+  cover.children('p').html(cover.children('p').html().replace('Red Wins!!!', ''))
+  cover.children('p').html(cover.children('p').html().replace("It's a Tie!!!", ''))
+  cover.children('p').css({'font-size': '100px'})
 }
+
+//Game logic
 
 var hexagons = $('.hex-container')
 
@@ -49,13 +65,17 @@ hexagons.click(function(){
     }
     turn += 1;
     $(this).addClass('blue-marker')
+    document.getElementById('click2').play()
     // scoringLogicBlue(getXCoord(this), getYCoord(this))
     // scanAll()
     checkHexBlue(xCoordBlueHome(), yCoordBlueHome())
     updateScoreBlue()
+    checkWinCondition()
     clearScoredTags()
     $(this).toggleClass('played')
     blueLength = 0
+    highlightPlayer()
+    console.log('It is turn number ' + turn)
   }
   else if ((turn % 2 === 1) && !($(this).hasClass('played'))) {
     if (turn > 1) {$(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')}
@@ -65,13 +85,17 @@ hexagons.click(function(){
     }
     turn += 1;
     $(this).addClass('red-marker')
+    document.getElementById('click1').play()
     // scoringLogicRed(getXCoord(this), getYCoord(this))
     // scanAll()
     checkHexRed(xCoordRedHome(), yCoordRedHome())
     updateScoreRed()
+    checkWinCondition()
     clearScoredTags()
     $(this).toggleClass('played')
     redLength = 0
+    highlightPlayer()
+    console.log('It is turn number ' + turn)
   }
 })
   
@@ -88,6 +112,44 @@ hexagons.click(function(){
     })
 })
 
+var redScoreContainer = $('#red-score-container')
+var blueScoreContainer = $('#blue-score-container')
+
+//This function will highlight the current player
+function highlightPlayer() {
+//On blue turn --
+  if (turn % 2 === 0){
+    console.log("It is blue's turn so highlighting blue player.")
+    blueScoreContainer.children('#blue-score-top').animate({
+      'borderBottomColor': 'rgba(0,0,255,0.9)'})
+    blueScoreContainer.children('#blue-score').animate({
+      'background-color': 'rgba(0,0,255,0.9)'})
+    blueScoreContainer.children('#blue-score-bottom').animate({
+      'borderTopColor': 'rgba(0,0,255,0.9)'})
+    redScoreContainer.children('#red-score-top').animate({
+      'borderBottomColor': 'rgba(255,0,0,0.5)'})
+    redScoreContainer.children('#red-score').animate({
+      'background-color': 'rgba(255,0,0,0.5)'})
+    redScoreContainer.children('#red-score-bottom').animate({
+      'borderTopColor': 'rgba(255,0,0,0.5)'})
+  }
+//On red turn --
+  if (turn % 2 === 1) {
+    console.log("It is red's turn so highlighting red player.")
+    redScoreContainer.children('#red-score-top').animate({
+      'borderBottomColor': 'rgba(255,0,0,0.9)'})
+    redScoreContainer.children('#red-score').animate({
+      'background-color': 'rgba(255,0,0,0.9)'})
+    redScoreContainer.children('#red-score-bottom').animate({
+      'borderTopColor': 'rgba(255,0,0,0.9)'})
+    blueScoreContainer.children('#blue-score-top').animate({
+      'borderBottomColor': 'rgba(0,0,255,0.5)'})
+    blueScoreContainer.children('#blue-score').animate({
+      'background-color': 'rgba(0,0,255,0.5)'})
+    blueScoreContainer.children('#blue-score-bottom').animate({
+      'borderTopColor': 'rgba(0,0,255,0.5)'})
+  }
+}
 var blueScore = 0
 var redScore = 0
 
@@ -520,9 +582,55 @@ function checkForRed(x, y) {
 // }
 
 function updateScoreBlue() {
-  $('#blue-score').text('Blue Score: ' + blueLength)
+  $('#blue-score').text(blueLength)
 }
 
 function updateScoreRed() {
-  $('#red-score').text('Red Score: ' + redLength)
+  $('#red-score').text(redLength)
+}
+
+//Audio
+$(".my_audio").trigger('load');
+var audio = document.getElementById('my_audio')
+audio.play();
+ $('.music').click(function(){
+   console.log('music click working')
+   $('.music').toggleClass('mute')
+   $('.music').toggleClass('unmute')
+   if ($('.music').hasClass('mute')) {
+     document.getElementById('my_audio').muted = true;
+   }
+   if ($('.music').hasClass('unmute')) {
+     document.getElementById('my_audio').muted = false;
+   }
+ })
+
+
+
+
+//Win Condition
+function checkWinCondition(){
+  if (turn === 44) {
+    cover.css("display", "table")
+    document.getElementById('applause').play()
+    $('#cancel-button').css("display", "block")
+    if ($('#blue-score').text() > $('#red-score').text()) {
+      cover.children('p').css("color", "blue")
+      cover.children('p').append('Blue Wins!!!')
+      cover.children('p').animate({'font-size': '+=30'})
+      console.log("BLUE WINS!")
+    }
+    if ($('#red-score').text() > $('#blue-score').text()) {
+      cover.children('p').css("color", "red")
+      console.log("RED WINS!")
+      cover.children('p').append('Red Wins!!!')
+      cover.children('p').animate({'font-size': '+=30'})
+    }
+    if ($('#blue-score').text() === $('#red-score').text()) {
+      cover.children('p').css("color", "white")
+      console.log("IT IS A TIE!!")
+      cover.children('p').append("It's a Tie!!!")
+      cover.children('p').animate({'font-size': '+=30'})
+    }
+  }
 }

@@ -1,16 +1,46 @@
 body {
   background-color: #DEFFFF;
+  background-image: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/rain-background.jpg');
+  background-size: 1200px;
+}
+
+/*This CSS makes it so no text or images are highlightable on the page*/
+* {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@font-face {
+    font-family: 'CabinSketch';
+    src: url('file:/Users/awasicek/wdi/workspace/project-01-game/fonts/CabinSketch-Regular.otf');
 }
 
 #game-area {
   width: 508px;
   height: 395px;
-  background-color: cyan;
+  /*background-color: rgba(103, 103, 103, 0.5);*/
+  /*background: radial-gradient(circle, rgba(103, 103, 103, 0.8), rgba(103, 103, 103, 0.1));*/
   margin: auto;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   padding: 20px;
+  z-index: 1;
 }
 
+h1 {
+  font-family: 'CabinSketch';
+  margin-top: -15px;
+  margin-bottom: -20px;
+  text-align: center;
+  font-size: 60px;
+  z-index: 1;
+}
+
+h1:hover {
+  cursor: default;
+}
 
 .blue_game_piece {
   width: 50px;
@@ -48,13 +78,14 @@ body {
 width: 0px;
 border-left: 30px solid transparent;
 border-right: 30px solid transparent;
-border-bottom: 20px solid orange;
+border-bottom: 20px solid #666564;
+z-index: 1;
 }
 
 .hex-center {
   width: 60px;
   height: 30px;
-  background-color: orange;
+  background-color: #666564;
   position: relative;
 }
 
@@ -62,52 +93,238 @@ border-bottom: 20px solid orange;
 width: 0px;
 border-left: 30px solid transparent;
 border-right: 30px solid transparent;
-border-top: 20px solid orange;
+border-top: 20px solid #666564;
+z-index: 1;
 }
 
 
 
 #hex-row-1 {
   margin-left: 90px;
+  z-index: 1;
 }
 
 #hex-row-2 {
   margin-top: -20px;
   margin-left: 60px;
+  z-index: 1;
 }
 
 #hex-row-3 {
   margin-top: -20px;
   margin-left: 30px;
+  z-index: 1;
 }
 
 #hex-row-4 {
   margin-top: -20px;
+  z-index: 1;
 }
 
 #hex-row-5 {
   margin-top: -20px;
   margin-left: 30px;
+  z-index: 1;
 }
 
 #hex-row-6 {
   margin-top: -20px;
   margin-left: 60px;
+  z-index: 1;
 }
 
 #hex-row-7 {
   margin-top: -20px;
   margin-left: 90px;
+  z-index: 1;
 }
 
 #blue-score {
-  background-color: blue;
+  font-family: 'CabinSketch';
+  font-size: 50px;
   color: white;
-  width: 125px;
+  width: 80px;
+  height: 50px;
+  float: left;
+  position: relative;
+  top: 185px;
+  right: 43px;
+  background-color: rgba(0,0,255,0.5);
+  text-align: center;
+  z-index: 1;
+}
+
+#blue-score-top {
+  width: 0px;
+  float: left;
+  position: relative;
+  top: 165px;
+  left: 38px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-bottom: 20px solid rgba(0,0,255,0.5);
+  z-index: 1;
+}
+
+#blue-score-bottom {
+  width: 0px;
+  float: left;
+  position: relative;
+  top: 235px;
+  right: 123px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-top: 20px solid rgba(0,0,255,0.5);
+  z-index: 1;
+}
+
+#blue-score:hover {
+  cursor: default;
 }
 
 #red-score {
-  background-color: red;
+  font-family: 'CabinSketch';
+  font-size: 50px;
   color: white;
-  width: 125px;
+  width: 80px;
+  height: 50px;
+  float: right;
+  position: relative;
+  top: 185px;
+  left: 47px;
+  background-color: rgba(255,0,0,0.5);
+  text-align: center;
+  z-index: 1;
+}
+
+#red-score-top {
+  width: 0px;
+  float: right;
+  position: relative;
+  top: 165px;
+  right: 32px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-bottom: 20px solid rgba(255,0,0,0.5);
+  z-index: 1;
+}
+
+#red-score-bottom {
+  width: 0px;
+  float: right;
+  position: relative;
+  top: 235px;
+  left: 127px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-top: 20px solid rgba(255,0,0,0.5);
+  z-index: 1;
+}
+
+#red-score:hover {
+  cursor: default;
+}
+
+#newGameButton {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-family: 'CabinSketch';
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  margin: auto;
+  display: block;
+  z-index: 1;
+}
+
+/*This CSS disables Chrome's blue outline around the button when clicked*/
+#newGameButton:focus {
+  outline:0;}
+
+#newGameButton:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+#control-panel {
+  margin-top: -27px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 200px;
+  z-index: 1;
+}
+
+.music {
+  display: block;
+}
+
+.music:hover {
+  cursor: pointer;
+}
+
+.mute {
+  content: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/volume-mute-icon.png');
+  width: 40px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  z-index: 1;
+}
+
+.unmute {
+  content: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/volume-on-icon.png');
+  width: 40px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  z-index: 1;
+}
+
+/*CSS FOR WINNER SCREEN*/
+#cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: 100px;
+  font-family: 'CabinSketch';
+}
+
+#cover p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#cancel-button {
+  position: fixed;
+  z-index: 5;
+  top: 30px;
+  right: 30px;
+  width: 80px;
+  height: 80px;
+  background-color: black;
+  color: white;
+  font-size: 40px;
+  font-family: 'CabinSketch';
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: none;
+}
+
+#cancel-button:hover {
+  cursor: pointer;
+  background-color: #383838;
+}
+
+#cancel-button:focus {
+  outline: 0;
 }

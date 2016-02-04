@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Andrew's Game</title>
+    <title>Hex Assembly</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- loading jQuery plugin -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -10,6 +10,22 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   </head>
   <body>
+    <h1>hexAssembly</h1>
+
+    <div id="cover"><p></p></div>
+    <button id="cancel-button" type="button" name="cancel">X</button>
+
+    <div id="red-score-container">
+      <div id="red-score-top"></div>
+      <div id="red-score">0</div>
+      <div id="red-score-bottom"></div>
+    </div>
+
+    <div id="blue-score-container">
+      <div id="blue-score-top"></div>
+      <div id="blue-score">0</div>
+      <div id="blue-score-bottom"></div>
+    </div>
 <!-- Begin game container -->
     <div id="game-area">
 
@@ -263,13 +279,26 @@
 
 <!-- End game container -->
     </div>
-    <br>
-    <div id="blue-score">Blue Score:</div>
-    <br>
-    <div id="red-score">Red Score:</div>
-    <br>
-    <button id="newGameButton" type="button" name="button">New Game</button>
 
+    <br>
+<!-- Control Panel -->
+    <div id="control-panel">
+        <button id="newGameButton" type="button" name="button">New Game</button>
+
+        <audio id="my_audio" preload="none">
+          <source src="sound/ambient-music.mp3" type="audio/mpeg">
+        </audio>
+        <img class='music unmute'>
+<!-- Sound effect files -->
+<audio id="click1" preload="none">
+  <source src="sound/click1.mp3" type="audio/mpeg">
+</audio>
+<audio id="click2" preload="none">
+  <source src="sound/click2.mp3" type="audio/mpeg">
+</audio>
+<audio id="applause" preload="none">
+  <source src="sound/applause.mp3" type="audio/mpeg">
+</audio>
     <script src="js/script.js"> </script>
   </body>
 </html>
