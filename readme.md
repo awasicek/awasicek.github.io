@@ -26,6 +26,7 @@ As a player, I want some positive feedback for when I win.
 * Game balance (e.g., first player has advantage)
 * Implement new game rules so there are more choices each turn (e.g., the ability to capture enemy hexes by surrounding them)
 * Improve styling
+* Mobile-friendly
 
 ##Technologies/Frameworks
 * HTML
