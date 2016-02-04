@@ -13,10 +13,10 @@ body {
   user-select: none;
 }
 
-/*@font-face {*/
-/*    font-family: 'CabinSketch';*/
-/*    src: url('https://github.com/awasicek/awasicek.github.io/raw/master/fonts/CabinSketch-Regular.otf') format('opentype');*/
-/*}*/
+@font-face {
+    font-family: 'CabinSketch';
+    src: url('https://fonts.gstatic.com/s/cabinsketch/v8/d9fijO34zQajqQvl3YHRCRampu5_7CjHW5spxoeN3Vs.woff2');
+}
 
 #game-area {
   width: 508px;
@@ -30,7 +30,7 @@ body {
 }
 
 h1 {
-  font-family: 'CabinSketch';
+  font-family: 'Cabin Sketch';
   margin-top: -15px;
   margin-bottom: -20px;
   text-align: center;
