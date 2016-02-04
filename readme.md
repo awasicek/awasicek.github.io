@@ -1,5 +1,6 @@
 # hex-assembly
-![Hex Logo](https://raw.githubusercontent.com/awasicek/hex-assembly/gh-pages/art/hexagon-64%20(1).png) ![Other Hex Logo] (https://raw.githubusercontent.com/awasicek/hex-assembly/gh-pages/art/hexagon-64.png)
+
+![Hex Logo](https://raw.githubusercontent.com/awasicek/hex-assembly/gh-pages/art/hexagon-64%20(1).png) ![Other Hex Logo](https://raw.githubusercontent.com/awasicek/hex-assembly/gh-pages/art/hexagon-64.png)
 ---
 
 Try to get the longest/biggest series of hexes connected to your home piece!
@@ -34,3 +35,6 @@ As a player, I want some positive feedback for when I win.
 * JavaScript
 * jQuery
 * jQuery UI
+
+##Concept
+![wireframe](https://raw.githubusercontent.com/awasicek/hex-assembly/master/art/wireframe-hexassembly.png)
