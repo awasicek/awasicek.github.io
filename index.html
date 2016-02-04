@@ -10,6 +10,19 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   </head>
   <body>
+    <h1>Game Title</h1>
+
+    <div id="red-score-container">
+      <div id="red-score-top"></div>
+      <div id="red-score">0</div>
+      <div id="red-score-bottom"></div>
+    </div>
+
+    <div id="blue-score-container">
+      <div id="blue-score-top"></div>
+      <div id="blue-score">0</div>
+      <div id="blue-score-bottom"></div>
+    </div>
 <!-- Begin game container -->
     <div id="game-area">
 
@@ -263,17 +276,17 @@
 
 <!-- End game container -->
     </div>
-    <br>
-    <div id="blue-score">Blue Score:</div>
-    <br>
-    <div id="red-score">Red Score:</div>
-    <br>
-    <button id="newGameButton" type="button" name="button">New Game</button>
 
-    <audio id="my_audio" preload="none">
-        <source src="sound/ambient-music.mp3" type="audio/mpeg">
-    </audio>
-    <img class='music unmute'>
+    <br>
+<!-- Control Panel -->
+    <div id="control-panel">
+        <button id="newGameButton" type="button" name="button">New Game</button>
+
+        <audio id="my_audio" preload="none">
+          <source src="sound/ambient-music.mp3" type="audio/mpeg">
+        </audio>
+        <img class='music unmute'>
+    </div>
     <script src="js/script.js"> </script>
   </body>
 </html>

@@ -56,6 +56,8 @@ hexagons.click(function(){
     clearScoredTags()
     $(this).toggleClass('played')
     blueLength = 0
+    highlightPlayer()
+    console.log('It is turn number ' + turn)
   }
   else if ((turn % 2 === 1) && !($(this).hasClass('played'))) {
     if (turn > 1) {$(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')}
@@ -72,6 +74,8 @@ hexagons.click(function(){
     clearScoredTags()
     $(this).toggleClass('played')
     redLength = 0
+    highlightPlayer()
+    console.log('It is turn number ' + turn)
   }
 })
   
@@ -88,6 +92,44 @@ hexagons.click(function(){
     })
 })
 
+var redScoreContainer = $('#red-score-container')
+var blueScoreContainer = $('#blue-score-container')
+
+//This function will highlight the current player
+function highlightPlayer() {
+//On blue turn --
+  if (turn % 2 === 0){
+    console.log("It is blue's turn so highlighting blue player.")
+    blueScoreContainer.children('#blue-score-top').animate({
+      'borderBottomColor': 'rgba(0,0,255,0.9)'})
+    blueScoreContainer.children('#blue-score').animate({
+      'background-color': 'rgba(0,0,255,0.9)'})
+    blueScoreContainer.children('#blue-score-bottom').animate({
+      'borderTopColor': 'rgba(0,0,255,0.9)'})
+    redScoreContainer.children('#red-score-top').animate({
+      'borderBottomColor': 'rgba(255,0,0,0.5)'})
+    redScoreContainer.children('#red-score').animate({
+      'background-color': 'rgba(255,0,0,0.5)'})
+    redScoreContainer.children('#red-score-bottom').animate({
+      'borderTopColor': 'rgba(255,0,0,0.5)'})
+  }
+//On red turn --
+  if (turn % 2 === 1) {
+    console.log("It is red's turn so highlighting red player.")
+    redScoreContainer.children('#red-score-top').animate({
+      'borderBottomColor': 'rgba(255,0,0,0.9)'})
+    redScoreContainer.children('#red-score').animate({
+      'background-color': 'rgba(255,0,0,0.9)'})
+    redScoreContainer.children('#red-score-bottom').animate({
+      'borderTopColor': 'rgba(255,0,0,0.9)'})
+    blueScoreContainer.children('#blue-score-top').animate({
+      'borderBottomColor': 'rgba(0,0,255,0.5)'})
+    blueScoreContainer.children('#blue-score').animate({
+      'background-color': 'rgba(0,0,255,0.5)'})
+    blueScoreContainer.children('#blue-score-bottom').animate({
+      'borderTopColor': 'rgba(0,0,255,0.5)'})
+  }
+}
 var blueScore = 0
 var redScore = 0
 
@@ -520,11 +562,11 @@ function checkForRed(x, y) {
 // }
 
 function updateScoreBlue() {
-  $('#blue-score').text('Blue Score: ' + blueLength)
+  $('#blue-score').text(blueLength)
 }
 
 function updateScoreRed() {
-  $('#red-score').text('Red Score: ' + redLength)
+  $('#red-score').text(redLength)
 }
 
 //Audio

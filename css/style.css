@@ -21,12 +21,24 @@ body {
 #game-area {
   width: 508px;
   height: 395px;
-  background-color: rgba(103, 103, 103, 0.5);
+  /*background-color: rgba(103, 103, 103, 0.5);*/
+  /*background: radial-gradient(circle, rgba(103, 103, 103, 0.8), rgba(103, 103, 103, 0.1));*/
   margin: auto;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   padding: 20px;
 }
 
+h1 {
+  font-family: 'CabinSketch';
+  margin-top: -15px;
+  margin-bottom: -20px;
+  text-align: center;
+  font-size: 60px;
+}
+
+h1:hover {
+  cursor: default;
+}
 
 .blue_game_piece {
   width: 50px;
@@ -119,15 +131,81 @@ border-top: 20px solid #666564;
 #blue-score {
   font-family: 'CabinSketch';
   font-size: 50px;
-  color: blue;
-  width: 150px;
+  color: white;
+  width: 80px;
+  height: 50px;
+  float: left;
+  position: relative;
+  top: 185px;
+  right: 43px;
+  background-color: rgba(0,0,255,0.5);
+  text-align: center;
+}
+
+#blue-score-top {
+  width: 0px;
+  float: left;
+  position: relative;
+  top: 165px;
+  left: 38px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-bottom: 20px solid rgba(0,0,255,0.5);
+}
+
+#blue-score-bottom {
+  width: 0px;
+  float: left;
+  position: relative;
+  top: 235px;
+  right: 123px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-top: 20px solid rgba(0,0,255,0.5);
+}
+
+#blue-score:hover {
+  cursor: default;
 }
 
 #red-score {
   font-family: 'CabinSketch';
   font-size: 50px;
-  color: red;
-  width: 150px;
+  color: white;
+  width: 80px;
+  height: 50px;
+  float: right;
+  position: relative;
+  top: 185px;
+  left: 47px;
+  background-color: rgba(255,0,0,0.5);
+  text-align: center;
+}
+
+#red-score-top {
+  width: 0px;
+  float: right;
+  position: relative;
+  top: 165px;
+  right: 32px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-bottom: 20px solid rgba(255,0,0,0.5);
+}
+
+#red-score-bottom {
+  width: 0px;
+  float: right;
+  position: relative;
+  top: 235px;
+  left: 127px;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-top: 20px solid rgba(255,0,0,0.5);
+}
+
+#red-score:hover {
+  cursor: default;
 }
 
 #newGameButton {
@@ -138,6 +216,8 @@ border-top: 20px solid #666564;
   border-radius: 5px;
   border: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  margin: auto;
+  display: block;
 }
 
 /*This CSS disables Chrome's blue outline around the button when clicked*/
@@ -149,16 +229,35 @@ border-top: 20px solid #666564;
   background-color: #383838;
 }
 
+#control-panel {
+  margin-top: -27px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 200px;
+}
+
+.music {
+  display: block;
+}
+
 .music:hover {
   cursor: pointer;
 }
 
 .mute {
   content: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/volume-mute-icon.png');
-  width: 50px;
+  width: 40px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
 }
 
 .unmute {
   content: url('file:/Users/awasicek/wdi/workspace/project-01-game/art/volume-on-icon.png');
-  width: 50px;
+  width: 40px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
 }
