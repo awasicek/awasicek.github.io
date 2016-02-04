@@ -74,6 +74,10 @@ h1:hover {
   display: inline-block
 }
 
+.hex-container:hover {
+  cursor: pointer;
+}
+
 .hex-top {
 width: 0px;
 border-left: 30px solid transparent;
