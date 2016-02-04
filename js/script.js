@@ -18,6 +18,7 @@ newGameButton.click(function(){
 })
 
 function newGame() {
+
   turn = 0
   // console.log('new game working')
   clearScoredTags()
@@ -426,3 +427,13 @@ function checkWinCondition(){
     }
   }
 }
+
+//Tooltips
+$('#red-score').tooltip({
+    content: 'Red home plus connected red pieces.',
+    tooltipClass: "info-tooltip"
+})
+$('#blue-score').tooltip({
+    content: 'Blue home plus connected blue pieces.',
+    tooltipClass: "info-tooltip"
+  })

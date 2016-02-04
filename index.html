@@ -6,26 +6,28 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- loading jQuery plugin -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!-- loading jQuery color animation plugin -->
+    <!-- loading jQuery UI plugin -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- loading font -->
     <link href='https://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
+    <!-- loading css for tooltips -->
+    <link rel="stylesheet" href="css/jquery-ui.css">
   </head>
   <body>
-    <h1>hexAssembly</h1>
+    <h1 id="headerOne">hexAssembly</h1>
 
     <div id="cover"><p></p></div>
     <button id="cancel-button" type="button" name="cancel">X</button>
 
     <div id="red-score-container">
       <div id="red-score-top"></div>
-      <div id="red-score">0</div>
+      <div id="red-score" title="red score tooltip">0</div>
       <div id="red-score-bottom"></div>
     </div>
 
     <div id="blue-score-container">
       <div id="blue-score-top"></div>
-      <div id="blue-score">0</div>
+      <div id="blue-score" title="blue score tooltip">0</div>
       <div id="blue-score-bottom"></div>
     </div>
 <!-- Begin game container -->

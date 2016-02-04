@@ -1,5 +1,5 @@
 # hex-assembly
-![Hex Logo](https://raw.githubusercontent.com/awasicek/hex-assembly/gh-pages/art/hexagon-64%20(1).png) ![Other Hex Logo] (https://raw.githubusercontent.com/awasicek/hex-assembly/gh-pages/art/hexagon-64.png)
+![Hex Logo](http://www.iconsdb.com/icons/preview/icon-sets/web-2-red/hexagon-xl.png)
 ---
 
 Try to get the longest/biggest series of hexes connected to your home piece!
