@@ -21,10 +21,7 @@ body {
 #game-area {
   width: 508px;
   height: 395px;
-  /*background-color: rgba(103, 103, 103, 0.5);*/
-  /*background: radial-gradient(circle, rgba(103, 103, 103, 0.8), rgba(103, 103, 103, 0.1));*/
   margin: auto;
-  /*border: 2px solid black;*/
   padding: 20px;
   z-index: 1;
 }
@@ -100,8 +97,6 @@ border-right: 30px solid transparent;
 border-top: 20px solid #666564;
 z-index: 1;
 }
-
-
 
 #hex-row-1 {
   margin-left: 90px;
@@ -331,10 +326,4 @@ z-index: 1;
 
 #cancel-button:focus {
   outline: 0;
-}
-
-.ui-tooltip {
-  color: white;
-  font-family: 'Cabin Sketch';
-  background-color: black;
 }

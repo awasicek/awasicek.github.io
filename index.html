@@ -13,10 +13,13 @@
     <!-- loading css for tooltips -->
     <link rel="stylesheet" href="css/jquery-ui.css">
   </head>
+
   <body>
+
     <h1 id="headerOne">hexAssembly</h1>
 
     <div id="cover"><p></p></div>
+
     <button id="cancel-button" type="button" name="cancel">X</button>
 
     <div id="red-score-container">
@@ -30,6 +33,7 @@
       <div id="blue-score" title="blue score tooltip">0</div>
       <div id="blue-score-bottom"></div>
     </div>
+
 <!-- Begin game container -->
     <div id="game-area">
 
@@ -285,24 +289,21 @@
     </div>
 
     <br>
+
 <!-- Control Panel -->
     <div id="control-panel">
         <button id="newGameButton" type="button" name="button">New Game</button>
-
-        <audio id="my_audio" preload="none">
-          <source src="sound/ambient-music.mp3" type="audio/mpeg">
-        </audio>
         <img class='music unmute'>
+    </div>
+
 <!-- Sound effect files -->
-<audio id="click1" preload="none">
-  <source src="sound/click1.mp3" type="audio/mpeg">
-</audio>
-<audio id="click2" preload="none">
-  <source src="sound/click2.mp3" type="audio/mpeg">
-</audio>
-<audio id="applause" preload="none">
-  <source src="sound/applause.mp3" type="audio/mpeg">
-</audio>
+    <audio id="click1" preload="none"><source src="sound/click1.mp3" type="audio/mpeg"></audio>
+    <audio id="click2" preload="none"><source src="sound/click2.mp3" type="audio/mpeg"></audio>
+    <audio id="applause" preload="none"><source src="sound/applause.mp3" type="audio/mpeg"></audio>
+    <audio id="my_audio" preload="none"><source src="sound/ambient-music.mp3" type="audio/mpeg"></audio>
+
+<!-- Loading javascript -->
     <script src="js/script.js"> </script>
+
   </body>
 </html>

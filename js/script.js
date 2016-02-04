@@ -1,29 +1,36 @@
-// $('#game-hex-1 *').click(function(){console.log('clicked game-hex-1')})
-// $('#game-hex-2 *').click(function(){console.log('clicked game-hex-2')})
-
-
-//Cancel button
 var cancelButton = $('#cancel-button')
 var cover = $('#cover')
+var newGameButton = $('#newGameButton')
+var hexagons = $('.hex-container')
+var redScoreContainer = $('#red-score-container')
+var blueScoreContainer = $('#blue-score-container')
+var blueScore = 0
+var redScore = 0
+var blueLength = 0
+var redLength = 0
+var turn = 0
+
+//Cancel button for exiting out of the game winner overlay
+
 cancelButton.click(function(){
     cover.css("display", "none")
     cancelButton.css("display", "none")
 })
 
-//New game
-var newGameButton = $('#newGameButton')
+//New game functionality
 
 newGameButton.click(function(){
   newGame()
 })
 
 function newGame() {
-
   turn = 0
   // console.log('new game working')
   clearScoredTags()
   blueLength = 0
   redLength = 0
+  blueScore = 0
+  redScore = 0
   for (i=1; i<45; i +=1) {
     $('#game-hex-' + i).removeClass('homeMarkerBlue')
     $('#game-hex-' + i).removeClass('homeMarkerRed')
@@ -43,19 +50,17 @@ function newGame() {
   cover.children('p').css({'font-size': '100px'})
 }
 
-//Game logic
-
-var hexagons = $('.hex-container')
-
+//This function is used to console.log the a clicked hex's number and x,y coordinates.  Mostly used for debugging and reference
 hexagons.click(function(){
   var i = hexagons.index($(this))
   // console.log('This is game hex ' + (i+1) + '.')
   // console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
 })
 
-var turn = 0
 
-// This function puts a player piece in a given hex as long as that hex has not already been used and marks that hex with the given color for the game logic's scoring
+//MAIN GAME LOGIC FUNCTION
+//The game is primarily driven on player clicks on the hexes.  Turns will automatically alternate.  Various functions will run after each click to tally the score, animate things accordingly, and play sound effects.
+// This function puts a player piece in a given hex as long as that hex has not already been used and marks that hex with the given color for the game logic's scoring.
 hexagons.click(function(){
   if ((turn % 2 === 0) && !($(this).hasClass('played'))) {
     if (turn > 0) {
@@ -85,8 +90,6 @@ hexagons.click(function(){
     turn += 1;
     $(this).addClass('red-marker')
     document.getElementById('click1').play()
-    // scoringLogicRed(getXCoord(this), getYCoord(this))
-    // scanAll()
     checkHexRed(xCoordRedHome(), yCoordRedHome())
     updateScoreRed()
     checkWinCondition()
@@ -98,7 +101,7 @@ hexagons.click(function(){
   }
 })
   
-// This function uses animation to change the color of the hexes as they are used
+// This function is utilizes animation to change the color of the hexes as they are used
 hexagons.click(function(){
     $(this).children('.hex-top').animate({
       'borderBottomColor': 'black'
@@ -110,9 +113,6 @@ hexagons.click(function(){
       'borderTopColor': 'black'
     })
 })
-
-var redScoreContainer = $('#red-score-container')
-var blueScoreContainer = $('#blue-score-container')
 
 //This function will highlight the current player
 function highlightPlayer() {
@@ -149,8 +149,7 @@ function highlightPlayer() {
       'borderTopColor': 'rgba(0,0,255,0.5)'})
   }
 }
-var blueScore = 0
-var redScore = 0
+
 
 //GAME LOGIC FOR SCORING
 
@@ -316,10 +315,7 @@ function yCoordRedHome() {
   return getYCoord('.homeMarkerRed')
 }
 
-//This is a recursive algorithm for finding the size/length given a starting hex
-var blueLength = 0
-var redLength = 0
-
+//This is a recursive algorithm for finding the size/length of connected hexes given a starting hex.  This is essential to the scoring process.
 function checkHexBlue(x, y) {
   if (checkForBlue(x, y) && !alreadyScored(x, y)) {
     // console.log("looking at surrounding hexes")
@@ -364,7 +360,6 @@ function clearScoredTags() {
   }
 }
 
-
 function markScoredRed(x, y) {
   $('.x'+x+'.y'+y).addClass('scored')
 //This will mark the hex at position (x, y) as scored
@@ -375,7 +370,6 @@ function checkForRed(x, y) {
 //This will check the hex at position (x, y) to see if there is a red piece on it
 //and it will return true if there is a red piece there and false if there is no red piece there
 }
-
 
 function updateScoreBlue() {
   $('#blue-score').text(blueLength)
