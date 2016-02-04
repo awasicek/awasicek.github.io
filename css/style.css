@@ -13,10 +13,10 @@ body {
   user-select: none;
 }
 
-@font-face {
-    font-family: 'CabinSketch';
-    src: url('https://github.com/awasicek/awasicek.github.io/raw/master/fonts/CabinSketch-Regular.otf') format('opentype');
-}
+/*@font-face {*/
+/*    font-family: 'CabinSketch';*/
+/*    src: url('https://github.com/awasicek/awasicek.github.io/raw/master/fonts/CabinSketch-Regular.otf') format('opentype');*/
+/*}*/
 
 #game-area {
   width: 508px;
@@ -140,7 +140,7 @@ z-index: 1;
 }
 
 #blue-score {
-  font-family: 'CabinSketch';
+  font-family: 'Cabin Sketch';
   font-size: 50px;
   color: white;
   width: 80px;
@@ -183,7 +183,7 @@ z-index: 1;
 }
 
 #red-score {
-  font-family: 'CabinSketch';
+  font-family: 'Cabin Sketch';
   font-size: 50px;
   color: white;
   width: 80px;
@@ -229,7 +229,7 @@ z-index: 1;
   background-color: black;
   color: white;
   font-size: 20px;
-  font-family: 'CabinSketch';
+  font-family: 'Cabin Sketch';
   border-radius: 5px;
   border: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -294,7 +294,7 @@ z-index: 1;
   height: 100%;
   display: none;
   font-size: 100px;
-  font-family: 'CabinSketch';
+  font-family: 'Cabin Sketch';
 }
 
 #cover p {
@@ -313,7 +313,7 @@ z-index: 1;
   background-color: black;
   color: white;
   font-size: 40px;
-  font-family: 'CabinSketch';
+  font-family: 'Cabin Sketch';
   border-radius: 5px;
   border: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
