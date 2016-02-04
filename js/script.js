@@ -65,6 +65,7 @@ hexagons.click(function(){
     }
     turn += 1;
     $(this).addClass('blue-marker')
+    document.getElementById('click2').play()
     // scoringLogicBlue(getXCoord(this), getYCoord(this))
     // scanAll()
     checkHexBlue(xCoordBlueHome(), yCoordBlueHome())
@@ -84,6 +85,7 @@ hexagons.click(function(){
     }
     turn += 1;
     $(this).addClass('red-marker')
+    document.getElementById('click1').play()
     // scoringLogicRed(getXCoord(this), getYCoord(this))
     // scanAll()
     checkHexRed(xCoordRedHome(), yCoordRedHome())
@@ -610,6 +612,7 @@ audio.play();
 function checkWinCondition(){
   if (turn === 44) {
     cover.css("display", "table")
+    document.getElementById('applause').play()
     $('#cancel-button').css("display", "block")
     if ($('#blue-score').text() > $('#red-score').text()) {
       cover.children('p').css("color", "blue")
