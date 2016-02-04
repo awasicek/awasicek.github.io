@@ -15,7 +15,7 @@ body {
 
 @font-face {
     font-family: 'CabinSketch';
-    src: url('https://github.com/awasicek/awasicek.github.io/raw/master/fonts/CabinSketch-Regular.otf');
+    src: url('https://github.com/awasicek/awasicek.github.io/master/fonts/CabinSketch-Regular.otf');
 }
 
 #game-area {
