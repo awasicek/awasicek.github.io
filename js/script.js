@@ -1,6 +1,16 @@
 // $('#game-hex-1 *').click(function(){console.log('clicked game-hex-1')})
 // $('#game-hex-2 *').click(function(){console.log('clicked game-hex-2')})
 
+
+//Cancel button
+var cancelButton = $('#cancel-button')
+var cover = $('#cover')
+cancelButton.click(function(){
+    cover.css("display", "none")
+    cancelButton.css("display", "none")
+})
+
+//New game
 var newGameButton = $('#newGameButton')
 
 newGameButton.click(function(){
@@ -26,7 +36,13 @@ function newGame() {
   }
   updateScoreBlue()
   updateScoreRed()
+  cover.children('p').html(cover.children('p').html().replace('Blue Wins!!!', ''))
+  cover.children('p').html(cover.children('p').html().replace('Red Wins!!!', ''))
+  cover.children('p').html(cover.children('p').html().replace("It's a Tie!!!", ''))
+  cover.children('p').css({'font-size': '100px'})
 }
+
+//Game logic
 
 var hexagons = $('.hex-container')
 
@@ -53,6 +69,7 @@ hexagons.click(function(){
     // scanAll()
     checkHexBlue(xCoordBlueHome(), yCoordBlueHome())
     updateScoreBlue()
+    checkWinCondition()
     clearScoredTags()
     $(this).toggleClass('played')
     blueLength = 0
@@ -71,6 +88,7 @@ hexagons.click(function(){
     // scanAll()
     checkHexRed(xCoordRedHome(), yCoordRedHome())
     updateScoreRed()
+    checkWinCondition()
     clearScoredTags()
     $(this).toggleClass('played')
     redLength = 0
@@ -584,3 +602,32 @@ audio.play();
      document.getElementById('my_audio').muted = false;
    }
  })
+
+
+
+
+//Win Condition
+function checkWinCondition(){
+  if (turn === 44) {
+    cover.css("display", "table")
+    $('#cancel-button').css("display", "block")
+    if ($('#blue-score').text() > $('#red-score').text()) {
+      cover.children('p').css("color", "blue")
+      cover.children('p').append('Blue Wins!!!')
+      cover.children('p').animate({'font-size': '+=30'})
+      console.log("BLUE WINS!")
+    }
+    if ($('#red-score').text() > $('#blue-score').text()) {
+      cover.children('p').css("color", "red")
+      console.log("RED WINS!")
+      cover.children('p').append('Red Wins!!!')
+      cover.children('p').animate({'font-size': '+=30'})
+    }
+    if ($('#blue-score').text() === $('#red-score').text()) {
+      cover.children('p').css("color", "white")
+      console.log("IT IS A TIE!!")
+      cover.children('p').append("It's a Tie!!!")
+      cover.children('p').animate({'font-size': '+=30'})
+    }
+  }
+}
