@@ -1,0 +1,113 @@
+body {
+  background-color: #DEFFFF;
+}
+
+#game-area {
+  width: 508px;
+  height: 395px;
+  background-color: cyan;
+  margin: auto;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+
+.blue_game_piece {
+  width: 50px;
+  position: absolute;
+  left: 5px;
+  top: -10px;
+}
+
+.red_game_piece {
+  width: 48px;
+  position: absolute;
+  left: 6px;
+  top: -9px;
+}
+
+.blue_small_house {
+  width: 40px;
+  position: absolute;
+  left: 10px;
+  top: -8px;
+}
+
+.red_small_house {
+  width: 40px;
+  position: absolute;
+  left: 10px;
+  top: -8px;
+}
+
+.hex-container {
+  display: inline-block
+}
+
+.hex-top {
+width: 0px;
+border-left: 30px solid transparent;
+border-right: 30px solid transparent;
+border-bottom: 20px solid orange;
+}
+
+.hex-center {
+  width: 60px;
+  height: 30px;
+  background-color: orange;
+  position: relative;
+}
+
+.hex-bottom {
+width: 0px;
+border-left: 30px solid transparent;
+border-right: 30px solid transparent;
+border-top: 20px solid orange;
+}
+
+
+
+#hex-row-1 {
+  margin-left: 90px;
+}
+
+#hex-row-2 {
+  margin-top: -20px;
+  margin-left: 60px;
+}
+
+#hex-row-3 {
+  margin-top: -20px;
+  margin-left: 30px;
+}
+
+#hex-row-4 {
+  margin-top: -20px;
+}
+
+#hex-row-5 {
+  margin-top: -20px;
+  margin-left: 30px;
+}
+
+#hex-row-6 {
+  margin-top: -20px;
+  margin-left: 60px;
+}
+
+#hex-row-7 {
+  margin-top: -20px;
+  margin-left: 90px;
+}
+
+#blue-score {
+  background-color: blue;
+  color: white;
+  width: 125px;
+}
+
+#red-score {
+  background-color: red;
+  color: white;
+  width: 125px;
+}
