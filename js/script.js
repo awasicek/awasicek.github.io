@@ -19,7 +19,7 @@ newGameButton.click(function(){
 
 function newGame() {
   turn = 0
-  console.log('new game working')
+  // console.log('new game working')
   clearScoredTags()
   blueLength = 0
   redLength = 0
@@ -48,8 +48,8 @@ var hexagons = $('.hex-container')
 
 hexagons.click(function(){
   var i = hexagons.index($(this))
-  console.log('This is game hex ' + (i+1) + '.')
-  console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
+  // console.log('This is game hex ' + (i+1) + '.')
+  // console.log('The x coordinate is ' + getXCoord(this) + ' and the y coordinate is ' + getYCoord(this) + '.')
 })
 
 var turn = 0
@@ -66,8 +66,6 @@ hexagons.click(function(){
     turn += 1;
     $(this).addClass('blue-marker')
     document.getElementById('click2').play()
-    // scoringLogicBlue(getXCoord(this), getYCoord(this))
-    // scanAll()
     checkHexBlue(xCoordBlueHome(), yCoordBlueHome())
     updateScoreBlue()
     checkWinCondition()
@@ -75,7 +73,7 @@ hexagons.click(function(){
     $(this).toggleClass('played')
     blueLength = 0
     highlightPlayer()
-    console.log('It is turn number ' + turn)
+    // console.log('It is turn number ' + turn)
   }
   else if ((turn % 2 === 1) && !($(this).hasClass('played'))) {
     if (turn > 1) {$(this).children('.hex-center').append('<img class="red_game_piece" src="art/red_sphere_piece.png" alt="red game piece" />')}
@@ -95,7 +93,7 @@ hexagons.click(function(){
     $(this).toggleClass('played')
     redLength = 0
     highlightPlayer()
-    console.log('It is turn number ' + turn)
+    // console.log('It is turn number ' + turn)
   }
 })
   
@@ -119,7 +117,7 @@ var blueScoreContainer = $('#blue-score-container')
 function highlightPlayer() {
 //On blue turn --
   if (turn % 2 === 0){
-    console.log("It is blue's turn so highlighting blue player.")
+    // console.log("It is blue's turn so highlighting blue player.")
     blueScoreContainer.children('#blue-score-top').animate({
       'borderBottomColor': 'rgba(0,0,255,0.9)'})
     blueScoreContainer.children('#blue-score').animate({
@@ -135,7 +133,7 @@ function highlightPlayer() {
   }
 //On red turn --
   if (turn % 2 === 1) {
-    console.log("It is red's turn so highlighting red player.")
+    // console.log("It is red's turn so highlighting red player.")
     redScoreContainer.children('#red-score-top').animate({
       'borderBottomColor': 'rgba(255,0,0,0.9)'})
     redScoreContainer.children('#red-score').animate({
@@ -154,17 +152,6 @@ var blueScore = 0
 var redScore = 0
 
 //GAME LOGIC FOR SCORING
-
-// function floodFill(x, y){
-// 	if(alreadyFilled(x, y)) return;
-// 	fill(x, y);
-//
-// 	floodFill(x,   y-1);
-// 	floodFill(x+1, y  );
-// 	floodFill(x,   y+1);
-// 	floodFill(x-1, y  );
-// }
-//
 
 //Where x and y are the coordinates of the hex
 
@@ -312,130 +299,6 @@ function checkForBlue(x, y) {
 //and it will return true if there is a blue piece there and false if there is no blue piece there
 }
 
-//Scan all hexes for unscored blue pieces
-function scanAll() {
-  scanLogic(1, 1)
-  scanLogic(1, 2)
-  scanLogic(1, 3)
-  scanLogic(1, 4)
-  scanLogic(1, 5)
-  scanLogic(1, 6)
-  scanLogic(1, 7)
-  scanLogic(2, 1)
-  scanLogic(2, 2)
-  scanLogic(2, 3)
-  scanLogic(2, 4)
-  scanLogic(2, 5)
-  scanLogic(2, 6)
-  scanLogic(2, 7)
-  scanLogic(3, 1)
-  scanLogic(3, 2)
-  scanLogic(3, 3)
-  scanLogic(3, 4)
-  scanLogic(3, 5)
-  scanLogic(3, 6)
-  scanLogic(3, 7)
-  scanLogic(4, 1)
-  scanLogic(4, 2)
-  scanLogic(4, 3)
-  scanLogic(4, 4)
-  scanLogic(4, 5)
-  scanLogic(4, 6)
-  scanLogic(4, 7)
-  scanLogic(5, 1)
-  scanLogic(5, 2)
-  scanLogic(5, 3)
-  scanLogic(5, 4)
-  scanLogic(5, 5)
-  scanLogic(5, 6)
-  scanLogic(5, 7)
-  scanLogic(6, 1)
-  scanLogic(6, 2)
-  scanLogic(6, 3)
-  scanLogic(6, 4)
-  scanLogic(6, 5)
-  scanLogic(6, 6)
-  scanLogic(6, 7)
-  scanLogic(7, 1)
-  scanLogic(7, 2)
-  scanLogic(7, 3)
-  scanLogic(7, 4)
-  scanLogic(7, 5)
-  scanLogic(7, 6)
-  scanLogic(7, 7)
-  scanLogic(8, 1)
-  scanLogic(8, 2)
-  scanLogic(8, 3)
-  scanLogic(8, 4)
-  scanLogic(8, 5)
-  scanLogic(8, 6)
-  scanLogic(8, 7)
-  scanLogic(9, 1)
-  scanLogic(9, 2)
-  scanLogic(9, 3)
-  scanLogic(9, 4)
-  scanLogic(9, 5)
-  scanLogic(9, 6)
-  scanLogic(9, 7)
-  scanLogic(10, 1)
-  scanLogic(10, 2)
-  scanLogic(10, 3)
-  scanLogic(10, 4)
-  scanLogic(10, 5)
-  scanLogic(10, 6)
-  scanLogic(10, 7)
-  scanLogic(11, 1)
-  scanLogic(11, 2)
-  scanLogic(11, 3)
-  scanLogic(11, 4)
-  scanLogic(11, 5)
-  scanLogic(11, 6)
-  scanLogic(11, 7)
-  scanLogic(12, 1)
-  scanLogic(12, 2)
-  scanLogic(12, 3)
-  scanLogic(12, 4)
-  scanLogic(12, 5)
-  scanLogic(12, 6)
-  scanLogic(12, 7)
-  scanLogic(13, 1)
-  scanLogic(13, 2)
-  scanLogic(13, 3)
-  scanLogic(13, 4)
-  scanLogic(13, 5)
-  scanLogic(13, 6)
-  scanLogic(13, 7)
-  scanLogic(14, 1)
-  scanLogic(14, 2)
-  scanLogic(14, 3)
-  scanLogic(14, 4)
-  scanLogic(14, 5)
-  scanLogic(14, 6)
-  scanLogic(14, 7)
-  scanLogic(15, 1)
-  scanLogic(15, 2)
-  scanLogic(15, 3)
-  scanLogic(15, 4)
-  scanLogic(15, 5)
-  scanLogic(15, 6)
-  scanLogic(15, 7)
-}
-
-function scanLogic(x, y) {
-  if (checkForBlue(x, y) && !alreadyScored(x,y)) {
-    if (checkForBlue(x-1, y-1) || checkForBlue(x+1, y-1) || checkForBlue(x-2, y) || checkForBlue(x+2, y) || checkForBlue(x-1, y+1) || checkForBlue(x+1, y+1)) {
-      blueScore +=1;
-      markScoredBlue(x, y);
-    }
-  }
-  if (checkForRed(x, y) && !alreadyScored(x,y)) {
-    if (checkForRed(x-1, y-1) || checkForRed(x+1, y-1) || checkForRed(x-2, y) || checkForRed(x+2, y) || checkForRed(x-1, y+1) || checkForRed(x+1, y+1)) {
-      redScore +=1;
-      markScoredRed(x, y);
-    }
-  }
-}
-
 function xCoordBlueHome() {
   return getXCoord('.homeMarkerBlue')
 }
@@ -458,11 +321,12 @@ var redLength = 0
 
 function checkHexBlue(x, y) {
   if (checkForBlue(x, y) && !alreadyScored(x, y)) {
-    console.log("looking at surrounding hexes")
+    // console.log("looking at surrounding hexes")
     if (checkForBlue(x-1, y-1) || checkForBlue(x+1, y-1) || checkForBlue(x-2, y) || checkForBlue(x+2, y) || checkForBlue(x-1, y+1) || checkForBlue(x+1, y+1))  {
       markScoredBlue(x, y)
       blueLength += 1
-      console.log('blueLength incremented because of ' + '(' + x + ',' + y +')')
+      blueScore += 1
+      // console.log('blueLength incremented because of ' + '(' + x + ',' + y +')')
       checkHexBlue(x-1, y-1)
       checkHexBlue(x+1, y-1)
       checkHexBlue(x-2, y)
@@ -476,11 +340,12 @@ function checkHexBlue(x, y) {
 
 function checkHexRed(x, y) {
   if (checkForRed(x, y) && !alreadyScored(x, y)) {
-    console.log("looking at surrounding hexes")
+    // console.log("looking at surrounding hexes")
     if (checkForRed(x-1, y-1) || checkForRed(x+1, y-1) || checkForRed(x-2, y) || checkForRed(x+2, y) || checkForRed(x-1, y+1) || checkForRed(x+1, y+1))  {
       markScoredRed(x, y)
       redLength += 1
-      console.log('redLength incremented because of ' + '(' + x + ',' + y +')')
+      redScore += 1
+      // console.log('redLength incremented because of ' + '(' + x + ',' + y +')')
       checkHexRed(x-1, y-1)
       checkHexRed(x+1, y-1)
       checkHexRed(x-2, y)
@@ -498,41 +363,6 @@ function clearScoredTags() {
   }
 }
 
-// function scoringLogicBlue(x, y) {
-//   if (alreadyScored(x, y)) {
-//     return;
-//   }
-//   if (checkForBlue(x-1, y-1)) {
-//     blueScore += 1;
-//     markScoredBlue(x, y);
-//     return;
-//   }
-//   if (checkForBlue(x+1, y-1)) {
-//     blueScore += 1;
-//     markScoredBlue(x, y);
-//     return;
-//   }
-//   if (checkForBlue(x-2, y)) {
-//     blueScore += 1;
-//     markScoredBlue(x, y);
-//     return;
-//   }
-//   if (checkForBlue(x+2, y)) {
-//     blueScore += 1;
-//     markScoredBlue(x, y);
-//     return;
-//   }
-//   if (checkForBlue(x-1, y+1)) {
-//     blueScore += 1;
-//     markScoredBlue(x, y);
-//     return;
-//   }
-//   if (checkForBlue(x+1, y+1)) {
-//     blueScore += 1;
-//     markScoredBlue(x, y);
-//     return;
-//   }
-// }
 
 function markScoredRed(x, y) {
   $('.x'+x+'.y'+y).addClass('scored')
@@ -545,41 +375,6 @@ function checkForRed(x, y) {
 //and it will return true if there is a red piece there and false if there is no red piece there
 }
 
-// function scoringLogicRed(x, y) {
-//   if (alreadyScored(x, y)) {
-//     return;
-//   }
-//   if (checkForRed(x-1, y-1)) {
-//     redScore += 1;
-//     markScoredRed(x, y);
-//     return;
-//   }
-//   if (checkForRed(x+1, y-1)) {
-//     redScore += 1;
-//     markScoredRed(x, y);
-//     return;
-//   }
-//   if (checkForRed(x-2, y)) {
-//     redScore += 1;
-//     markScoredRed(x, y);
-//     return;
-//   }
-//   if (checkForRed(x+2, y)) {
-//     redScore += 1;
-//     markScoredRed(x, y);
-//     return;
-//   }
-//   if (checkForRed(x-1, y+1)) {
-//     redScore += 1;
-//     markScoredRed(x, y);
-//     return;
-//   }
-//   if (checkForRed(x+1, y+1)) {
-//     redScore += 1;
-//     markScoredRed(x, y);
-//     return;
-//   }
-// }
 
 function updateScoreBlue() {
   $('#blue-score').text(blueLength)
@@ -594,7 +389,7 @@ $(".my_audio").trigger('load');
 var audio = document.getElementById('my_audio')
 audio.play();
  $('.music').click(function(){
-   console.log('music click working')
+  //  console.log('music click working')
    $('.music').toggleClass('mute')
    $('.music').toggleClass('unmute')
    if ($('.music').hasClass('mute')) {
@@ -605,28 +400,25 @@ audio.play();
    }
  })
 
-
-
-
 //Win Condition
 function checkWinCondition(){
   if (turn === 44) {
     cover.css("display", "table")
     document.getElementById('applause').play()
     $('#cancel-button').css("display", "block")
-    if ($('#blue-score').text() > $('#red-score').text()) {
+    if (blueScore > redScore) {
       cover.children('p').css("color", "blue")
       cover.children('p').append('Blue Wins!!!')
       cover.children('p').animate({'font-size': '+=30'})
       console.log("BLUE WINS!")
     }
-    if ($('#red-score').text() > $('#blue-score').text()) {
+    if (redScore > blueScore) {
       cover.children('p').css("color", "red")
       console.log("RED WINS!")
       cover.children('p').append('Red Wins!!!')
       cover.children('p').animate({'font-size': '+=30'})
     }
-    if ($('#blue-score').text() === $('#red-score').text()) {
+    if (blueScore === redScore) {
       cover.children('p').css("color", "white")
       console.log("IT IS A TIE!!")
       cover.children('p').append("It's a Tie!!!")
