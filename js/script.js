@@ -4,8 +4,6 @@ var newGameButton = $('#newGameButton')
 var hexagons = $('.hex-container')
 var redScoreContainer = $('#red-score-container')
 var blueScoreContainer = $('#blue-score-container')
-var blueScore = 0
-var redScore = 0
 var blueLength = 0
 var redLength = 0
 var turn = 0
@@ -29,8 +27,6 @@ function newGame() {
   clearScoredTags()
   blueLength = 0
   redLength = 0
-  blueScore = 0
-  redScore = 0
   for (i=1; i<45; i +=1) {
     $('#game-hex-' + i).removeClass('homeMarkerBlue')
     $('#game-hex-' + i).removeClass('homeMarkerRed')
@@ -322,7 +318,6 @@ function checkHexBlue(x, y) {
     if (checkForBlue(x-1, y-1) || checkForBlue(x+1, y-1) || checkForBlue(x-2, y) || checkForBlue(x+2, y) || checkForBlue(x-1, y+1) || checkForBlue(x+1, y+1))  {
       markScoredBlue(x, y)
       blueLength += 1
-      blueScore += 1
       // console.log('blueLength incremented because of ' + '(' + x + ',' + y +')')
       checkHexBlue(x-1, y-1)
       checkHexBlue(x+1, y-1)
@@ -341,7 +336,6 @@ function checkHexRed(x, y) {
     if (checkForRed(x-1, y-1) || checkForRed(x+1, y-1) || checkForRed(x-2, y) || checkForRed(x+2, y) || checkForRed(x-1, y+1) || checkForRed(x+1, y+1))  {
       markScoredRed(x, y)
       redLength += 1
-      redScore += 1
       // console.log('redLength incremented because of ' + '(' + x + ',' + y +')')
       checkHexRed(x-1, y-1)
       checkHexRed(x+1, y-1)
@@ -395,25 +389,26 @@ audio.play();
    }
  })
 
+
 //Win Condition
 function checkWinCondition(){
   if (turn === 44) {
     cover.css("display", "table")
     document.getElementById('applause').play()
     $('#cancel-button').css("display", "block")
-    if (blueScore > redScore) {
+    if (parseInt($('#blue-score').text()) > parseInt($('#red-score').text())) {
       cover.children('p').css("color", "blue")
       cover.children('p').append('Blue Wins!!!')
       cover.children('p').animate({'font-size': '+=30'})
       console.log("BLUE WINS!")
     }
-    if (redScore > blueScore) {
+    if (parseInt($('#red-score').text()) > parseInt($('#blue-score').text())) {
       cover.children('p').css("color", "red")
       console.log("RED WINS!")
       cover.children('p').append('Red Wins!!!')
       cover.children('p').animate({'font-size': '+=30'})
     }
-    if (blueScore === redScore) {
+    if (parseInt($('#blue-score').text()) === parseInt($('#red-score').text())) {
       cover.children('p').css("color", "white")
       console.log("IT IS A TIE!!")
       cover.children('p').append("It's a Tie!!!")
