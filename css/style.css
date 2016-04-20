@@ -2,6 +2,7 @@ body {
   background-color: #DEFFFF;
   background-image: url('https://raw.githubusercontent.com/awasicek/awasicek.github.io/master/art/rain-background.jpg');
   background-size: 1200px;
+  background-repeat: no-repeat;
 }
 
 /*This CSS makes it so no text or images are highlightable on the page*/
