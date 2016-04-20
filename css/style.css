@@ -1,7 +1,8 @@
 body {
   background-color: #DEFFFF;
   background-image: url('https://raw.githubusercontent.com/awasicek/awasicek.github.io/master/art/rain-background.jpg');
-  background-size: 1200px;
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
